@@ -2,6 +2,7 @@
 
 Deploying Drupal with [Composer](http://getcomposer.org).
 Based on [Drush Composer] (https://www.drupal.org/project/composer).
+See [Drupal 8 deployment: Meet Composer] (http://slides.com/popdandaniel/drupal8_deployment_with_composer)
 
 ## Description
 
