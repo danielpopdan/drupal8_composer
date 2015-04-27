@@ -1,0 +1,8 @@
+# Each directory listed here will be symlinked to the web directory from the
+# composer directory. The key represents the target directory and the value will
+# be the link. Example:
+#
+#modules: 'modules/custom'
+#profiles: 'profiles'
+#themes: 'themes'
+#config: 'config'

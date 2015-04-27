@@ -1,0 +1,53 @@
+{
+  "name": "drupal/composer",
+  "description": "Use Composer, the PHP package management system, from Drush.",
+  "homepage": "http://drupal.org/project/composer",
+  "license": "GPL-2.0",
+  "type": "drupal-drush",
+  "authors": [
+    {
+      "name": "Rob Loach",
+      "homepage": "http://robloach.net"
+    }
+  ],
+  "support": {
+    "issues": "http://drupal.org/project/issues/composer",
+    "source": "http://drupalcode.org/project/composer.git"
+  },
+  "require": {
+    "php": ">=5.4",
+    "composer/composer": "1.0.0-alpha9",
+    "composer/installers": "~1.0.20",
+    "drupal/drupal": "~8.0"
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "extra": {
+    "installer-paths": {
+      "../web/": ["type:drupal-core"],
+      "../web/modules/contrib/{$name}": ["type:drupal-module"]
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://packagist.drupal-composer.org"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "CustomLoader\\": "script/"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "CustomLoader\\Install::symlinks",
+      "CustomLoader\\Install::shared"
+    ],
+    "post-update-cmd": [
+      "CustomLoader\\Install::symlinks",
+      "CustomLoader\\Install::shared"
+    ]
+  }
+}
