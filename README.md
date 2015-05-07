@@ -6,6 +6,11 @@ Based on [Drush Composer] (https://www.drupal.org/project/composer).
 
 See [Drupal 8 deployment: Meet Composer] (http://slides.com/popdandaniel/drupal8_deployment_with_composer)
 
+## Clone
+
+Please clone the project in [project_name]/composer directory to respect the
+directory structure.
+
 ## Description
 
 This package downloads Drupal Core and contrib modules. Also creates symlinks

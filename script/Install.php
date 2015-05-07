@@ -45,17 +45,18 @@ class Install {
   public static function symlinks() {
     $symlink_settings = Install::getPath(array('composer', 'symlink_settings.yml'));
     $custom = Yaml::parse(file_get_contents($symlink_settings));
-
-    foreach ($custom as $type => $link) {
-      // Creates folder if it doesn't exist.
-      if (!file_exists($type)) {
-        mkdir($type, 0777, TRUE);
+    if (!empty($custom)) {
+      foreach ($custom as $type => $link) {
+        // Creates folder if it doesn't exist.
+        if (!file_exists($type)) {
+          mkdir($type, 0777, TRUE);
+        }
+        if (!file_exists(Install::getPath(array('web', $link)))) {
+          mkdir(Install::getPath(array('web', $link)), 0777, TRUE);
+        }
+        // Creates symlinks.
+        Install::_symlink(Install::getPath(array('composer', $type)), Install::getPath(array('web', $link)));
       }
-      if (!file_exists(Install::getPath(array('web', $link)))) {
-        mkdir(Install::getPath(array('web', $link)), 0777, TRUE);
-      }
-      // Creates symlinks.
-      Install::_symlink(Install::getPath(array('composer', $type)), Install::getPath(array('web', $link)));
     }
   }
 
